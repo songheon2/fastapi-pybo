@@ -20,6 +20,10 @@ def answer_create(question_id: int,
     # create answer
     question = question_crud.get_question(db, question_id=question_id)
     if not question:
+<<<<<<< HEAD
+=======
+        # 답변이 없으면 detail 출력
+>>>>>>> c418497 (2-7답변등록까지 커밋)
         raise HTTPException(status_code=404, detail="Question not found")
     answer_crud.create_answer(db, question=question,
                               answer_create=_answer_create)

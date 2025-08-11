@@ -1,5 +1,9 @@
 from pydantic import BaseModel, field_validator
+<<<<<<< HEAD
 
+=======
+import datetime
+>>>>>>> c418497 (2-7답변등록까지 커밋)
 
 # 답변 content 부분 스키마
 class AnswerCreate(BaseModel):
@@ -12,4 +16,14 @@ class AnswerCreate(BaseModel):
     def not_empty(cls, v):
         if not v or not v.strip():
             raise ValueError('빈 값은 허용되지 않습니다.')
+<<<<<<< HEAD
         return v
+=======
+        return v
+
+# 답변 출력(1건)
+class Answer(BaseModel):
+    id: int
+    content: str
+    create_date: datetime.datetime
+>>>>>>> c418497 (2-7답변등록까지 커밋)
