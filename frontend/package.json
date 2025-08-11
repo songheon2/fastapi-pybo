@@ -9,11 +9,10 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-<<<<<<< HEAD
-    "@sveltejs/vite-plugin-svelte": "^5.0.3",
-=======
+
+    "__comment" : "@sveltejs/vite-plugin-svelte ^5.0.3",
     "@sveltejs/vite-plugin-svelte": "^5.1.1",
->>>>>>> c418497 (2-7답변등록까지 커밋)
+
     "svelte": "^5.28.1",
     "vite": "^6.3.5"
   },

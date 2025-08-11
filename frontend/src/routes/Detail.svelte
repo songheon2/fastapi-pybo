@@ -1,12 +1,6 @@
 <script>
     import fastapi from "../lib/api"
-<<<<<<< HEAD
 
-    export let params = {}
-    let question_id = params.question_id
-    console.log('question_id:'+ question_id)    
-    let question = {}
-=======
     import Error from "../components/Error.svelte"
 
     export let params = {}
@@ -18,8 +12,6 @@
     let content = ""
     let error = {detail:[]}
 
->>>>>>> c418497 (2-7답변등록까지 커밋)
-
     function get_question() {
         fastapi("get", "/api/question/detail/" + question_id, {}, (json) => {
             question = json
@@ -27,8 +19,7 @@
     }
 
     get_question()
-<<<<<<< HEAD
-=======
+
 
     // 답변 등록 API 호출 함수 (답변 등록 버튼 클릭시 실행)
     function post_answer(event) {
@@ -51,15 +42,11 @@
             }
         )
     }
->>>>>>> c418497 (2-7답변등록까지 커밋)
 </script>
 
 <h1>{question.subject}</h1>
 <div>
     {question.content}
-<<<<<<< HEAD
-</div>
-=======
 </div>
 <ul>
     {#each question.answers as answer}
@@ -76,4 +63,3 @@
     <!--답변 등록 버튼-->
     <input type="submit" value="답변등록" onclick="{post_answer}">
 </form>
->>>>>>> c418497 (2-7답변등록까지 커밋)
