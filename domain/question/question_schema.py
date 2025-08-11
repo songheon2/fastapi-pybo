@@ -1,6 +1,6 @@
 import datetime
 
-from pydantic import BaseModel
+from pydantic import BaseModel, field_validator
 
 from domain.answer.answer_schema import Answer
 
@@ -16,3 +16,14 @@ class Question(BaseModel):
     create_date: datetime.datetime
     # answer 스키마로 구성된 answers 리스트
     answers: list[Answer] = []
+
+# 질문 등록 스키마
+class QuestionCreate(BaseModel):
+    subject: str
+    content: str
+
+    @field_validator('subject', 'content')
+    def not_empty(cls, v):
+        if not v or not v.strip():
+            raise ValueError('빈 값은 허용되지 않습니다.')
+        return v
