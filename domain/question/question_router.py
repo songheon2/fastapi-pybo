@@ -10,12 +10,16 @@ router = APIRouter(
 )
 
 # response_model 속성 : question_list 리턴값은 Question 스키마로 구성된 리스트로 세팅
-@router.get("/list", response_model=list[question_schema.Question])
-def question_list(db: Session = Depends(get_db)):
-    # db = SessionLocal()
-    # db.close()
-    _question_list = question_crud.get_question_list(db)
-    return _question_list
+@router.get("/list", response_model=question_schema.QuestionList)
+def question_list(db: Session = Depends(get_db),page: int = 0, size: int = 10):
+    # page : 페이지 번호  size : 한 페이지에 보여줄 게시물 갯수
+    total, _question_list = question_crud.get_question_list(
+    db, skip = page * size, limit = size)
+    return {
+        # 출력 스키마( QuestionList ) 에 매핑되는 딕셔너리로 return
+        'total': total,
+        'question_list': _question_list
+    }
 
 # /detail/:question_id 요청 처리
 @router.get("/detail/{question_id}", response_model=question_schema.Question)

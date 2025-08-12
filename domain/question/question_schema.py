@@ -27,3 +27,9 @@ class QuestionCreate(BaseModel):
         if not v or not v.strip():
             raise ValueError('빈 값은 허용되지 않습니다.')
         return v
+
+class QuestionList(BaseModel):
+    # 전체 계시물 갯수
+    total: int = 0
+    # 질문 목록
+    question_list: list[Question] = []
