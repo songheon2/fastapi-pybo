@@ -1,12 +1,13 @@
 <script>
     import { link } from 'svelte-spa-router'
+    import { page } from "../lib/store"
 </script>
 
 <!-- 네비게이션바 -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
     <div class="container-fluid">
         <!--질문목록(경로 : /)화면으로 돌아가는 Pybo 로고-->
-        <a use:link class="navbar-brand" href="/">Pybo</a>
+        <a use:link class="navbar-brand" href="/" on:click="{() => {$page = 0}}">Pybo</a>
         <button
             class="navbar-toggler"
             type="button"
